@@ -1,0 +1,331 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    src: url("../res/Poppins-Regular.ttf");
+    font-family: Poppins;
+}
+
+html,
+body {
+    background: #233;
+    font-family: Poppins;
+    font-size: 18px;
+    overflow: hidden;
+}
+
+.wrapper {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    overflow: hidden;
+    width: 350px;
+    transition: .4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    height: auto;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 1px 25px 40px 5px rgba(100, 100, 100, 0.12),
+        2px 30px 50px 6px rgba(100, 100, 100, 0.07);
+    padding: 1em 1.6em 0.6em 1.6em;
+    z-index: 1;
+}
+
+.shadow {
+    width: 280px;
+    height: 28px;
+    transition: .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transform: rotateX(70deg);
+    margin-top: 35px;
+    border-radius: 50%;
+    box-shadow: 3px 3px 10px 5px rgba(0, 0, 0, 0.12);
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#explosion div {
+    position: absolute;
+    top: -30px;
+    width: 10px;
+    height: 10px;
+    font-size: 25px;
+}
+
+.container .flex2 .title::first-letter {
+    color: #055;
+}
+
+.container .flex2 .title {
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 50px;
+    color: #555;
+}
+
+.question {
+    margin: .4em 0 0 0;
+    font-weight: bold;
+    color: #666;
+}
+
+.container .flex2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+}
+
+.container .flex2 .time {
+    font-weight: bold;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #099;
+    color: #fff;
+    font-size: 17px;
+    padding: .6em .5em;
+    box-shadow: 0px 3px 10px 5px rgba(100, 100, 100, 0.07);
+    border-radius: 8px;
+}
+
+.container .options {
+    width: 100%;
+    padding-top: .5em;
+}
+
+.container .options .option {
+    width: 100%;
+    padding: .8em .3em;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #555;
+    user-select: none;
+    margin: 0 0 .4em 0;
+    -webkit-user-select: none;
+    font-size: 19px;
+    font-weight: bold;
+    transition: .2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    position: relative;
+}
+
+.option2 {
+    width: 100%;
+    padding: .8em .3em;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #555;
+    user-select: none;
+    margin: 0 0 .4em 0;
+    -webkit-user-select: none;
+    font-size: 19px;
+    font-weight: bold;
+    transition: .2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    position: relative;
+}
+
+.percent {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    color: #099;
+}
+
+.container .options {
+    font-weight: bold;
+    color: #666;
+}
+
+.container .options .option::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 0px;
+    background-color: #0cc;
+    transition: .43s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.container .options .option:hover::before {
+    width: 100%;
+}
+
+.container .options .option:hover {
+    background-color: rgba(150, 150, 150, 0.1);
+}
+
+.buttons {
+    display: flex;
+    width: 100%;
+    margin: .7em 0;
+    justify-content: space-between;
+    align-items: center;
+    gap: 17px;
+}
+
+.buttons button {
+    padding: .5em 0;
+    font-family: Poppins;
+    line-height: 20px;
+    border: none;
+    outline: none;
+    background-color: #099;
+    color: #fff;
+    padding: .7em .9em;
+    font-size: 17px;
+    font-weight: bolder;
+    border-radius: 5px;
+    text-transform: capitalize;
+    cursor: pointer;
+    user-select: none;
+    transition: .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -webkit-user-select: none;
+    box-shadow: 0px 3px 10px 5px rgba(100, 100, 100, 0.07);
+    position: relative;
+    overflow: hidden;
+}
+
+.success {
+    color: #099;
+    font-weight: bold;
+}
+
+.error {
+    font-weight: bold;
+    color: #c00;
+}
+
+#status {
+    transition: .2s cubic-bezier(0.165, 0.84, 0.44, 1);
+    opacity: 0;
+}
+
+.valid {
+    border: 1.4px solid #099;
+    background-color: rgba(0, 150, 150, 0.3);
+}
+
+.invalid {
+    border: 1.4px solid #900;
+    background-color: rgba(150, 0, 0, 0.3);
+}
+
+.buttons button:active {
+    box-shadow: inset 2px 5px 8px 3px rgba(100, 100, 100, 0.3);
+}
+
+.buttons .skip-btn {
+    background-color: #c00;
+}
+
+.progress {
+    width: 0%;
+    height: 4px;
+    background-color: #099;
+    margin: .5em 0;
+    transition: .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+    border-radius: 8px;
+}
+
+@keyframes move {
+    from {
+        left: 0%;
+    }
+
+    to {
+        left: 70%;
+    }
+}
+
+@keyframes down {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+        top: 350%;
+    }
+}
+
+@keyframes move {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    30%,
+    90%,
+    100% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+}
+
+@keyframes start {
+    0% {
+        width: 0%;
+    }
+
+    50% {
+        width: 50%;
+        background-color: rgb(255, 231, 13);
+    }
+
+    100% {
+        width: 100%;
+        background-color: #c00;
+    }
+}
+
+button[disabled] {
+    opacity: 0.5;
+}
+
+@media screen and (max-width: 400px) {
+    .container {
+        width: 300px;
+    }
+}
+
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+.pattern {
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+    position: fixed;
+    top: -250px;
+    z-index: -1;
+    right: -250px;
+    opacity: .7;
+    animation: rotate 30s linear infinite;
+    /* background: linear-gradient(to top right, #122, #233); */
+    /* filter: brightness(0.7); */
+}
